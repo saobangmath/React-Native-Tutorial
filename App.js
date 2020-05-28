@@ -1,56 +1,9 @@
 import 'react-native-gesture-handler';
 import React from 'react'; 
-import { StyleSheet, Text, TextInput, View, ScrollView ,Image, FlatList, Button, SectionList} from 'react-native'; // components;
-import {Dimensions} from 'react-native';
-import {NavigationContainer, StackActions} from '@react-navigation/native'
-import {createStackNavigator} from '@react-navigation/stack'
-/**
- * constant variable define;
- */
-const image = {uri:'https://upload.wikimedia.org/wikipedia/commons/4/4c/Korotkevich_ITMO.jpg', 
-               method: "GET", 
-               width:400, height:400, flex:1};
-
-const screen = Dimensions.get('window');
-
-const achievements = [{key:"Google CodeJam champion from 2014-2019"}, 
-                      {key:"IOI gold medalist from 2007-2012"}, 
-                      {key:"ACM-ICPC World Champion in 2013 and 2015"}, 
-                      {key:"Facebook Hacker Cup 2014, 2015 and 2019 winner"},
-                      {key:"Yandex algorithm winner in 2010, 2013, 2014, 2015, 2017"},
-                      {key:"Snack Down champion in 2018, 2019 (Team)"}];
-
-const winning_match = [{year:2014, data:["Google Code Jam", "Facebook Hacker Cup"]},
-                       {year:2015, data:["Google Code Jam", "ICPC World Champion"]},
-                       {year:2016, data:["Google Code Jam", "Facebook Hacker Cup"]},
-                       {year:2017, data:["Google Code Jam", "Facebook Hacker Cup"]},
-                       {year:2018, data:["Google Code Jam", "Google HashCode Champion"]},
-                       {year:2019, data:["Google Code Jam", "Facebook Hacker Cup"]},
-                      ];
-const organizations = [ {name : "Google",   uri: require("./images/Google.png")},
-                        {name : "Facebook", uri: require("./images/Facebook.png")},
-                        {name : "Yandex",   uri: require("./images/Yandex.png")},
-                        {name : "Hackerank",uri: require("./images/Hackerank.png")}   
-                      ];
-const Stack = createStackNavigator();
-var msg = "";
-/**
- *  My stack function
- */
-function MyStack(){
-  return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen
-          name = "Home"
-          component={Home}
-          options={{title:"Welcome"}}
-        />
-        <Stack.Screen name = "Profile" component = {Profile}/>
-      </Stack.Navigator>
-    </NavigationContainer>
-  )
-}
+import { StyleSheet, Text, View, ScrollView ,Image, FlatList, SectionList} from 'react-native'; // components;
+import {NavigationContainer, StackActions} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
+import {image, screen, achievements, winning_match, organizations}  from './Constants'
 /**
  * main app module;
  */
