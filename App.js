@@ -4,29 +4,40 @@ import {Keyboard, StyleSheet, Text, View, ScrollView ,Image, TextInput, FlatList
 import {NavigationContainer, StackActions} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {image, screen, achievements, winning_match, organizations}  from './Constants'
+import styles from './App.stylesheet.module'
 /**
  * main app module;
  */
 export default function App() {
   // inputState is an array with 2 element:
   // inputState[0]: the current state of the 
-  const inputState = useState({title : '', amount : ''});
+  const [enteredTitle, setEnteredTitle] = useState('');
+  const [enteredAmount, setEnteredAmount] = useState('');
   return (
     <View style={styles.container}>
       <Image source={image}/>
+
       <Text style={styles.header}>Gennady Korotkevich</Text>
+
       <TextInput type = "text" 
                  style = {styles.input}
                  placeholder = "title"
-                 value ={inputState[0].title} 
-                 onChange = {event => inputState[1]({title : event.target.value})}
+                 value ={enteredTitle} 
+                 onChange = {event => 
+                  {
+                    setEnteredTitle(event.target.value); 
+                  }}
                  onTouchMove = {() => Keyboard.dismiss()}
                  />
+
       <TextInput type = "text"
                  style = {styles.input}
                  placeholder = "amount"
-                 value = {inputState[0].title}
-                 onChange = {event => inputState[1]({amount : event.target.value})}
+                 value = {enteredAmount}
+                 onChange = {event =>
+                  {
+                    setEnteredAmount(event.target.value);
+                  }}
                  onTouchMove = {() => Keyboard.dismiss()}
                  />
       <ScrollView style={{flexDirection:'column', flex:1}}>
@@ -48,7 +59,9 @@ export default function App() {
                   keyExtractor={(item, match)=> match
                 }
               />
+              
         </View>
+        
         <View>
           <Text style={styles.section}>Big tech companies related</Text>
           {/* flatlist of all organization have participated for competitions*/}
@@ -66,48 +79,48 @@ export default function App() {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  input: {
-    textAlign: "center"
-  },
-  container:{
-      flex: 1,
-      backgroundColor: '#fff',
-      flexDirection: 'column',  
-      justifyContent: 'center'
-  },
-  header: {
-      color: "red",
-      alignSelf: "center",
-      fontStyle: "italic",
-      fontWeight: "bold",
-      fontSize:30,
-  },
-  section:{
-      width:"100%",
-      backgroundColor: "#0f0",
-      fontSize:20,
-      fontWeight:"bold",
-      textAlign:"center",
-  },
-  text:{
-      color: '#00f',
-      fontSize:16,
-      justifyContent:'space-between',
-      padding:10,    
-      alignItems: 'center', 
-      alignSelf:'center',
-      marginLeft:10,
-  },
-  textInput: {
-      alignSelf:'flex-start',
-      fontSize: 16,
-  },
-  card:{
-      flex : 1,
-      alignSelf: 'center',
-      width : 40,
-      height: 40
-  }
-});
+// const styles = StyleSheet.create({
+//   input: {
+//     textAlign: "center", 
+//     padding: 10
+//   },
+//   container:{
+//       flex: 1,
+//       backgroundColor: '#fff',
+//       flexDirection: 'column',  
+//       justifyContent: 'center'
+//   },
+//   header: {
+//       color: "red",
+//       alignSelf: "center",
+//       fontStyle: "italic",
+//       fontWeight: "bold",
+//       fontSize:30,
+//   },
+//   section:{
+//       width:"100%",
+//       backgroundColor: "#0f0",
+//       fontSize:20,
+//       fontWeight:"bold",
+//       textAlign:"center",
+//   },
+//   text:{
+//       color: '#00f',
+//       fontSize:16,
+//       justifyContent:'space-between',
+//       padding:10,    
+//       alignItems: 'center', 
+//       alignSelf:'center',
+//       marginLeft:10,
+//   },
+//   textInput: {
+//       alignSelf:'flex-start',
+//       fontSize: 16,
+//   },
+//   card:{
+//       flex : 1,
+//       alignSelf: 'center',
+//       width : 40,
+//       height: 40
+//   }
+// });
